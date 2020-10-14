@@ -1,149 +1,11 @@
-book.js:
-    {
-      Header: 'Created date',
-      accessor: 'createdDate',
-      Cell: ({ original }) => <Moment format="HH:mm DD/MM/YYYY">{original.createdDate}</Moment>
-    },
-    {
-      Header: 'Modified date',
-      accessor: 'modifiedDate',
-      Cell: ({ original }) => <Moment format="HH:mm DD/MM/YYYY">{original.modifiedDate}</Moment>
-    }
+Nav: vẫn ko fix được cái lỗi thỉnh thoảng bị miss menu /fetch-demo
+=> Solution: hãy để việc gen menu phía BE care
 
-===
 Nav.js:
-import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { ROLES } from '../../constants/Constants';
-import { auth } from '../Auth/Auth';
-import './Nav.scss';
-
-const MENU_ITEMS = [
-  {
-    name: 'Home',
-    path: '/',
-    key: 'home',
-    level: 1,
-    subItems: null
-  },
-  {
-    name: 'Book',
-    path: '/book',
-    key: 'book',
-    level: 1,
-    subItems: null
-  },
-  {
-    name: 'About',
-    path: '/about',
-    key: 'about',
-    level: 1,
-    subItems: null
-  },
-  {
-    name: 'Demo',
-    path: null,
-    key: 'demo',
-    level: 1,
-    subItems: [
-      {
-        name: 'Hook demo',
-        path: null,
-        key: 'hookDemo',
-        level: 2,
-        subItems: [
-          {
-            name: 'Clock Demo',
-            path: '/clock-demo',
-            key: 'clockDemo',
-            level: 3,
-            subItems: null
-          },
-          {
-            name: 'Fetch Demo',
-            path: '/fetch-demo',
-            key: 'fetchDemo',
-            level: 3,
-            subItems: null
-          }
-        ]
-      }
-    ]
-  }
-];
-
-const ROLE_TABLE = {
-  '/book': [ROLES.ROLE_USER, ROLES.ROLE_ADMIN],
-  '/fetch-demo': [ROLES.ROLE_USER, ROLES.ROLE_ADMIN]
-};
-
-class Nav extends Component {
-  handleLogout = () => {
-    auth.logout();
-  };
-
-  // Duyệt từng phần tử của menuItems, xem roleArray có quyền thằng item nào,
-  // nếu ko có quyền xem thằng item đó thì remove nó khỏi mảng menuItems
-  getActiveMenuItems = (roleArray, menuItems) => {
-    menuItems.forEach((item, index) => {
-      if(item.subItems) {
-        this.getActiveMenuItems(roleArray, item.subItems);
-      } else {
-        if(!this.rolesHasPermission(roleArray, item.path)) {
-          menuItems.splice(index, 1);
-        }
-      }
-    });
-  }
-
-  // Những URL nào ko có trong này tức là public, role nào cũng vào được
-  rolesHasPermission = (roles, path) => {
-    if (!ROLE_TABLE[path]) return true;
-    for (let i = 0; i < roles.length; i++) {
-      if (ROLE_TABLE[path].includes(roles[i])) return true;
-    }
-    // Dùng forEach: bất đồng bộ nên ko được nhé!
-    // Nó sẽ return false trước khi chạy vào trong forEach
-    // roles.forEach(role => {
-    //   if (ROLE_TABLE[path].includes(role)) return true;
-    // });
-    return false;
-  };
-
-  generateMenu = (menuItems) => {
-    const { pathname } = this.props.location;
-    return menuItems.map((item) => {
-      const itemClass = 'menu-item' + (item.path === pathname ? ' active-menu' : '') + " level" + item.level;
-      if(item.path === null) item.path = "#";
-
-      if (item.subItems) {
-        return (
-          <li key={item.key} className={itemClass + ' menu-parent'}>
-            <Link to={item.path}>
-              {item.name} <i className="fas fa-caret-down"></i>
-            </Link>
-            <ul key={item.key} className={itemClass + ' sub-menu'}>
-              {this.generateMenu(item.subItems)}
-            </ul>
-          </li>
-        );
-      } else {
-        return (
-          <li key={item.key} className={itemClass}>
-            <Link to={item.path}>{item.name}</Link>
-          </li>
-        );
-      }
-    });
-  };
-
-  render() {
-    const { userInfo } = this.props;
-    const roleArray = userInfo ? userInfo.roleArray : [];
-    this.getActiveMenuItems(roleArray, MENU_ITEMS);
-
-    return (
-      <React.Fragment>
+render:
+return (
+      <nav className="navbar custom-navbar">
+        <ul className="nav-wrapper">{this.generateMenu(menuItems)}</ul>
         <div className="userinfo-wrapper">
           {!userInfo && <Link to="/login">Login</Link>}
           {userInfo && (
@@ -156,13 +18,23 @@ class Nav extends Component {
             </div>
           )}
         </div>
-        <nav className="navbar custom-navbar">
-          <ul className="nav-wrapper">{this.generateMenu(MENU_ITEMS)}</ul>
-        </nav>
-      </React.Fragment>
+      </nav>
     );
+    
+Nav.scss:
+.userinfo-wrapper {
+  position: absolute;
+  right: 9px;
+  top: 8px;
+  color: #fff;
+  .logout-link {
+    cursor: pointer;
+    color: #2199f9;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
-// Use withRouter HOC in order to inject match, history and location in your component props.
-export default withRouter(Nav);
+Book.js:
+    const sort = params.sortBy ? params.sortBy + ',' + params.sortOrder : this.state.params.sort;
