@@ -1,0 +1,211 @@
+.ddyy-alo-phone {
+  background-color: transparent;
+  cursor: pointer;
+  width: 105px;
+  height: 105px;
+  position: fixed;
+  transition: visibility 0.5s ease 0s;
+  z-index: 2000;
+  left: 0;
+  bottom: 0;
+}
+
+.ddyy-alo-ph-circle {
+  animation: 1.2s ease-in-out 0s normal none infinite running ddyy-alo-circle-anim;
+  background-color: transparent;
+  border: 2px solid rgba(30, 30, 30, 0.4);
+  border-radius: 100%;
+  height: 100px;
+  left: 0px;
+  opacity: 0.1;
+  position: absolute;
+  top: 0px;
+  transform-origin: 50% 50% 0;
+  transition: all 0.5s ease 0s;
+  width: 100px
+}
+
+.ddyy-alo-ph-circle-fill {
+  animation: 2.3s ease-in-out 0s normal none infinite running ddyy-alo-circle-fill-anim;
+  border: 2px solid transparent;
+  border-radius: 100%;
+  height: 70px;
+  left: 15px;
+  position: absolute;
+  top: 15px;
+  transform-origin: 50% 50% 0;
+  transition: all 0.5s ease 0s;
+  width: 70px
+}
+
+.ddyy-alo-ph-img-circle {
+  border: 2px solid transparent;
+  border-radius: 100%;
+  height: 50px;
+  left: 25px;
+  opacity: 0.7;
+  position: absolute;
+  top: 25px;
+  transform-origin: 50% 50% 0;
+  width: 50px
+}
+
+.ddyy-alo-phone.ddyy-alo-hover,
+.ddyy-alo-phone:hover {
+  opacity: 1
+}
+
+.ddyy-alo-phone.ddyy-alo-active .ddyy-alo-ph-circle {
+  animation: 1.1s ease-in-out 0s normal none infinite running ddyy-alo-circle-anim !important
+}
+
+.ddyy-alo-phone.ddyy-alo-static .ddyy-alo-ph-circle {
+  animation: 2.2s ease-in-out 0s normal none infinite running ddyy-alo-circle-anim !important
+}
+
+.ddyy-alo-phone.ddyy-alo-hover .ddyy-alo-ph-circle,
+.ddyy-alo-phone:hover .ddyy-alo-ph-circle {
+  border-color: var(--ddyyPrimary);
+  opacity: 0.5
+}
+
+.ddyy-alo-phone.ddyy-alo-green.ddyy-alo-hover .ddyy-alo-ph-circle,
+.ddyy-alo-phone.ddyy-alo-green:hover .ddyy-alo-ph-circle {
+  border-color: var(--ddyyPrimaryHover);;
+  opacity: 1
+}
+
+.ddyy-alo-phone.ddyy-alo-green .ddyy-alo-ph-circle {
+  border-color: var(--ddyyPrimaryFaded);
+  opacity: 1
+}
+
+.ddyy-alo-phone.ddyy-alo-hover .ddyy-alo-ph-circle-fill,
+.ddyy-alo-phone:hover .ddyy-alo-ph-circle-fill {
+  background-color: var(--ddyyPrimary);
+}
+
+.ddyy-alo-phone.ddyy-alo-green.ddyy-alo-hover .ddyy-alo-ph-circle-fill,
+.ddyy-alo-phone.ddyy-alo-green:hover .ddyy-alo-ph-circle-fill {
+  background-color: var(--ddyyPrimaryHover);
+}
+
+.ddyy-alo-phone.ddyy-alo-green .ddyy-alo-ph-circle-fill {
+  background-color: var(--ddyyPrimary);
+}
+
+.ddyy-alo-phone.ddyy-alo-hover .ddyy-alo-ph-img-circle,
+.ddyy-alo-phone:hover .ddyy-alo-ph-img-circle {
+  background-color: var(--ddyyPrimary);
+}
+
+.ddyy-alo-phone.ddyy-alo-green.ddyy-alo-hover .ddyy-alo-ph-img-circle,
+.ddyy-alo-phone.ddyy-alo-green:hover .ddyy-alo-ph-img-circle {
+  background-color: var(--ddyyPrimaryHover);
+}
+
+.ddyy-alo-phone.ddyy-alo-green .ddyy-alo-ph-img-circle {
+  background-color: var(--ddyyPrimary);
+}
+
+@keyframes ddyy-alo-circle-anim {
+  0% {
+    opacity: 0.1;
+    transform: rotate(0deg) scale(0.5) skew(1deg)
+  }
+
+  30% {
+    opacity: 0.5;
+    transform: rotate(0deg) scale(0.7) skew(1deg)
+  }
+
+  100% {
+    opacity: 0.6;
+    transform: rotate(0deg) scale(1) skew(1deg)
+  }
+}
+
+@keyframes ddyy-alo-circle-img-anim {
+  0% {
+    transform: rotate(0deg) scale(1) skew(1deg)
+  }
+
+  10% {
+    transform: rotate(-25deg) scale(1) skew(1deg)
+  }
+
+  20% {
+    transform: rotate(25deg) scale(1) skew(1deg)
+  }
+
+  30% {
+    transform: rotate(-25deg) scale(1) skew(1deg)
+  }
+
+  40% {
+    transform: rotate(25deg) scale(1) skew(1deg)
+  }
+
+  50% {
+    transform: rotate(0deg) scale(1) skew(1deg)
+  }
+
+  100% {
+    transform: rotate(0deg) scale(1) skew(1deg)
+  }
+}
+
+@keyframes ddyy-alo-circle-fill-anim {
+  0% {
+    opacity: 0.2;
+    transform: rotate(0deg) scale(0.7) skew(1deg)
+  }
+
+  50% {
+    opacity: 0.2;
+    transform: rotate(0deg) scale(1) skew(1deg)
+  }
+
+  100% {
+    opacity: 0.2;
+    transform: rotate(0deg) scale(0.7) skew(1deg)
+  }
+}
+
+.ddyy-alo-ph-img-circle i {
+  animation: 1s ease-in-out 0s normal none infinite running ddyy-alo-circle-img-anim;
+  font-size: 30px;
+  line-height: 50px;
+  padding-left: 10px;
+  color: #fff
+}
+
+@keyframes ddyy-alo-ring-ring {
+  0% {
+    transform: rotate(0deg) scale(1) skew(1deg)
+  }
+
+  10% {
+    transform: rotate(-25deg) scale(1) skew(1deg)
+  }
+
+  20% {
+    transform: rotate(25deg) scale(1) skew(1deg)
+  }
+
+  30% {
+    transform: rotate(-25deg) scale(1) skew(1deg)
+  }
+
+  40% {
+    transform: rotate(25deg) scale(1) skew(1deg)
+  }
+
+  50% {
+    transform: rotate(0deg) scale(1) skew(1deg)
+  }
+
+  100% {
+    transform: rotate(0deg) scale(1) skew(1deg)
+  }
+}
