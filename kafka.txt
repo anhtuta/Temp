@@ -1,0 +1,23 @@
+=== Kafka
+Example events are payment transactions, geolocation updates from mobile phones, shipping orders, sensor measurements from IoT devices or medical equipment, and much more. These events are organized and stored in topics. Very simplified, a topic is similar to a folder in a filesystem, and the events are the files in that folder
+
+run zookeeper:
+bin\windows\zookeeper-server-start.bat config\zookeeper.properties
+
+start kafka server:
+bin\windows\kafka-server-start.bat config\server.properties
+
+create first event:
+bin\windows\kafka-topics.bat --create --topic quickstart-events --bootstrap-server localhost:9092
+
+describe event recently created:
+bin\windows\kafka-topics.bat --describe --topic quickstart-events --bootstrap-server localhost:9092
+
+write events to the topic:
+bin\windows\kafka-console-producer.bat --topic quickstart-events --bootstrap-server localhost:9092
+(Now enter something on cmd, each line will be a separate event being written to the topic)
+
+Read the events:
+bin\windows\kafka-console-consumer.bat --topic quickstart-events --from-beginning --bootstrap-server localhost:9092
+
+Cái này khá giống chat server: mở 1 cmd làm producer, và nhiều cmd làm consumer, mỗi khi producer enter 1 event, thì các consumer đều nhận được
