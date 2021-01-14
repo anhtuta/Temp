@@ -1,0 +1,19 @@
+error to seperate file:
+ 
+  <property name="FILE_PATTERN" value="%d{dd-MM-yyyy HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n"/>
+  <property name="CONSOLE_PATTERN" value="%green(%d{dd-MM-yyyy HH:mm:ss.SSS}) %highlight(%-5level) %magenta([%thread]) %cyan(%logger{36}) - %msg%n"/>
+  <property name="USER_LOG_HOME" value="logs" />
+
+  <appender name="FILE_APPENDER_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${USER_LOG_HOME}/app-error.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${USER_LOG_HOME}/app-%d{yyyyMMdd}.log</fileNamePattern>
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>WARN</level>
+    </filter>
+    <encoder>
+      <pattern>${FILE_PATTERN}</pattern>
+    </encoder>
+  </appender>
