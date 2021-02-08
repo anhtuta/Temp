@@ -1,0 +1,22 @@
+Biến thể:
+Blocking queue: là queue thread safe: việc enqueue, dequeue sẽ bị block lại nếu như đang có thead khác thao tác trên queue:
+http://tutorials.jenkov.com/java-util-concurrent/blockingqueue.html
+https://kipalog.com/posts/Queue--BlockingQueue--SynchronousQueue-trong-java-va-ung-dung
+
+
+Ứng dụng:
+Buffer: web server sẽ lưu những request slow (chẳng hạn request đó đến từ user dùng mạng 2G) vào trong 1 queue gọi là buffer
+VD trong hệ thống pub-sub:
+Thread safe khi insert dữ liệu vào và lấy dữ liệu ra
+Khi queue đầy thì việc insert dữ liệu sẽ bị blocked cho đến khi consumer giải phóng bớt dữ liệu ra
+Khi queue rỗng thì consumer sẽ bị blocked cho đến khi producer insert chút gì vào
+
+Bài toán cụ thể dùng queue:
+Gửi email: Nếu muốn gửi email cho nhiều người, thì ta sẽ insert tất cả người nhận vào Queue, sau đó sẽ có 1 service khác thực hiện việc đọc email address đó và lần lượt gửi.
+Gửi log: như bên hệ thống A muốn gửi log liên tục sang hệ thống B để B xử lý (bóc tách data, lưu vào database), có thể xây dựng thành 1 hệ thống pub-sub với A là publisher, B là consumer. Như vậy sẽ tránh được data loss do A gửi quá nhiều mà B chưa handle kịp
+
+TRIE: Ô màu trắng là phần tử con trỏ tới null
+
+BST: bỏ phần Nên cần bằng cây BST => có thể dùng cây AVL, Red-black…
+
+Bỏ phần heap sort ít dùng hơn đi
