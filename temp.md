@@ -1,5 +1,5 @@
 ## So sánh HashMap, LinkedHashMap, TreeMap
-<div class="table-compare-maps">
+<div id="table-compare-maps" class="demo">
 
 | Thuộc tính                    | HashMap                                                                                                                  | LinkedHashMap                        | TreeMap                     |
 |-------------------------------|--------------------------------------------------------------------------------------------------------------------------|--------------------------------------|-----------------------------|
