@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" media="all" href="./temp.css" />
+<link rel="stylesheet" type="text/css" href="./temp.css"></link>
 
 ## So sánh HashMap, LinkedHashMap, TreeMap
 <div id="table-compare-maps" class="demo">
