@@ -1,0 +1,32 @@
+Résumé – Tu TA ANH
+
+Education
+2013 - 2018 HUST
+
+Business / Professional Experience
+6/2017 - 8/2017 Internship at FPT software, Hanoi
+6/2018 - present Backend developer at Samsung R&D Center (SVMC), Hanoi
+
+Industry Know-how
+Web development
+Web security
+Database management
+
+Main focus / (key) technical skills
+Software Engineer
+Server Administration: Linux
+Programing Language: Java, Javascript, C/C++
+Backend: Spring MVC, Spring Boot
+Front-end: ReactJS
+Database: MySQL, Redis, Elasticsearch
+Web server: Apache Tomcat
+Source management: Git
+CI/CD: circleCI, Jenkin
+Queue: RabbitMQ, Kafka
+Logging & Monitoring: ELK
+
+Projects & Assignments (extract)
+
+Install Agent: member, fullstack developer - ...
+Samsung Dashboard: member, backend developer - ...
+Model Change: member, backend developer - ...
