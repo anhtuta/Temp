@@ -1,19 +1,18 @@
-import React from "react";
-import Modal from "react-bootstrap/Modal";
-import ButtonDefault from "../Buttons/ButtonDefault";
-import "../../css/Modal.css";
+import React from 'react';
+import Modal from 'react-bootstrap/Modal';
+import Button from '../Button/Button';
 
-const NormalModal = props => {
+const NormalModal = (props) => {
   const {
     show,
-    customClass = "",
-    size = "",
-    onClose,
-    onCancel,
+    customClass = '',
+    size = '',
+    modalTitle = '',
+    saveButtonText = '',
+    cancelButtonText = '',
     onSave,
-    modalTitle = "",
-    cancelButtonText = "",
-    saveButtonText = "",
+    onCancel,
+    onClose,
     children,
     isDelete = false,
     disabledSaveBtn = false,
@@ -33,17 +32,26 @@ const NormalModal = props => {
       </Modal.Header>
       <Modal.Body>{children}</Modal.Body>
       <Modal.Footer>
-        {cancelButtonText && (
-          <ButtonDefault
-            type="clear-button"
-            onClick={onCancel}
-            text={cancelButtonText}
+        {saveButtonText && (
+          <Button
+            type={isDelete ? 'delete-button' : 'solid-button'}
+            className={isDelete ? 'btn-danger' : 'btn-success'}
+            onClick={onSave}
+            text={saveButtonText}
+            disabled={disabledSaveBtn}
           />
         )}
+        {cancelButtonText && (
+          <Button
+            type="clear-button"
+            className="btn-secondary"
+            onClick={onCancel}
+            text={cancelButtonText} />
+        )}
         {buttons &&
-          buttons.map(button => {
+          buttons.map((button) => {
             return (
-              <ButtonDefault
+              <Button
                 key={button.key}
                 type={button.type}
                 onClick={button.onClick}
@@ -52,14 +60,6 @@ const NormalModal = props => {
               />
             );
           })}
-        {saveButtonText && (
-          <ButtonDefault
-            type={isDelete ? "delete-button" : "solid-button"}
-            onClick={onSave}
-            text={saveButtonText}
-            disabled={disabledSaveBtn}
-          />
-        )}
       </Modal.Footer>
     </Modal>
   );
@@ -67,23 +67,23 @@ const NormalModal = props => {
 
 export default NormalModal;
 
-/////
-import React from "react";
-import Modal from "react-bootstrap/Modal";
-import ButtonDefault from "../Buttons/ButtonDefault";
-import "../../css/Modal.css";
+===
+import React from 'react';
+import Modal from 'react-bootstrap/Modal';
+import Button from '../Button/Button';
 
-const ConfirmModal = props => {
+const ConfirmModal = (props) => {
   const {
     show,
-    customClass = "",
+    customClass = '',
+    saveButtonClass = '',
+    modalTitle = '',
+    bodyMessage = '',
+    cancelButtonText = '',
+    saveButtonText = '',
     onClose,
     onCancel,
     onSave,
-    modalTitle = "",
-    bodyMessage = "",
-    cancelButtonText = "",
-    saveButtonText = "",
     isDelete = false,
     children
   } = props;
@@ -99,24 +99,24 @@ const ConfirmModal = props => {
       <Modal.Header closeButton>
         <Modal.Title>{modalTitle}</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        {bodyMessage}
-        {children}
-      </Modal.Body>
+      {(bodyMessage || children) && (
+        <Modal.Body>
+          {bodyMessage}
+          {children}
+        </Modal.Body>
+      )}
       <Modal.Footer>
-        {cancelButtonText && (
-          <ButtonDefault
-            type="clear-button"
-            onClick={onCancel}
-            text={cancelButtonText}
-          />
-        )}
         {saveButtonText && (
-          <ButtonDefault
-            type={isDelete ? "delete-button" : "solid-button"}
+          <Button
+            type={isDelete ? 'delete-button' : 'solid-button'}
+            className={isDelete ? 'btn-danger' : 'btn-success'}
             onClick={onSave}
             text={saveButtonText}
           />
+        )}
+        {cancelButtonText && (
+          <Button type="clear-button" onClick={onCancel} text={cancelButtonText} 
+          className="btn-secondary" />
         )}
       </Modal.Footer>
     </Modal>
@@ -124,4 +124,3 @@ const ConfirmModal = props => {
 };
 
 export default ConfirmModal;
-
