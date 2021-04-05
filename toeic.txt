@@ -1,0 +1,107 @@
+Economy4, Test1
+1. Most of the companies surveyed ----- their growth to marketing
+and sale strategies
+A.attributes
+B.attributed
+C.attributing
+D.attribution
+
+=> B. companies surveyed là cụm danh từ, attributed là main verb
+
+2. Visitor to the central area are invited to visit Central Ottage,
+one of the few historic spots in the ----- morden town of Joplin
+a.however
+b.instead
+c.separately
+d.otherwise
+
+=> D. otherwise (adj) = different (khác)
+
+3. The design of the proposed project is one of the criteria the
+committee will evaluate ----determining the recipient of the state grant
+a.in
+b.and
+c.yet
+d.which
+
+=> A. evaluate in + V-ing (Tra laban dictionary mà ko thấy cụm từ này)
+
+=====
+Economy4, Test10
+1. ------- the deadline to be met, engineers
+will have to put in at least fifteen
+additional hours over the next week.
+(A) Because
+(B) In order for
+(C) In terms on
+(D) Rather
+
+=> B. In order for so/st to do st: so that someone can do something or
+something can happen
+(Để cái gì đó xảy ra...).
+Ko thể chọn A vì Because + of + N
+
+2. Sheridan Fashions, now -------
+throughout Japan, first began as a small
+tailor shop in Yukita twenty years ago.
+(A) operates
+(B) have been operating
+(C) could have operated
+(D) operating
+
+=> D. (ko cần tobe cũng có V-ing được à)
+
+=====
+ETS2019 - test 3
+This manual provides guidelines for inventory control at
+Malanta facilities. Our advanced manufacturing procedures
+depend on --135-- inventory control. Only by maintaining a precise flow
+of inventory --136-- minimize costs and ensure prompt shipments.
+136.
+(A) is able to
+(B) to be able
+(C) our ability to
+(D) are we able to
+
+=> D. (do đảo ngữ only)
+Câu bình thường:
+We are able to minimize costs and ensure prompt shipments only
+by maintaining a precise flow of inventory.
+Chủ ngữ: we
+Động từ: are
+Cụm giới từ: only by maintaining a precise flow of inventory.
+Đảo ngữ: đảo cụm giới từ only by maintaining a precise flow of inventory:
+Only by maintaining a precise flow of inventory are we able to
+minimize costs and ensure prompt shipments.
+
+=====
+ETS2019 - test 10
+To All Staff,
+As many of you are aware, Jacob Wu, our long-standing Chief Executive Officer,
+---139--- on 1 October. Twenty years ago, Mr. Wu set out to create a
+Hong Kong-based services firm with an international scope
+139.
+(A) retired
+(B) will be retiring
+(C) would retire
+(D) was to retire
+
+=> B. Cấu trúc "will be V-ing" trong mẫu ngữ pháp này dùng để nhấn mạnh ý nghĩa
+cho hành động sẽ diễn ra trong tương lai, không liên quan đến thì "Tương lai
+tiếp diễn". Vì vậy, nếu các bạn dịch "sẽ đang …" là không đúng nhé.
+Ex: We will throw a party this Sunday
+(Chúng ta sẽ tổ chức một bữa tiệc vào Chủ nhật này)
+Để nhấn mạnh sự việc này ta sẽ nói là:
+We will be throwing a party this Sunday
+
+=====
+ETS2019 - test 7
+They would appreciate ---- ways to enhance the airport
+user's experience.
+142.
+(A) to discuss
+(B) discussing
+(C) discuss
+(D) discussed
+
+=> B. appreciate + V-ing
