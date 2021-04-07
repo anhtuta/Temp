@@ -96,17 +96,15 @@ We will be throwing a party this Sunday
 
 =====
 ETS2019 - test 7
-They would appreciate ---- ways to enhance the airport
+142. They would appreciate ---- ways to enhance the airport
 user's experience.
-142.
 (A) to discuss
 (B) discussing
 (C) discuss
 (D) discussed
 
 => B. appreciate + V-ing
-
-ETS7 - 2019
+ETS2019 - test 7
 114. It is ------- for the audience to hold its
 applause until the speaker has finished.
 (A) enthusiastic
@@ -197,7 +195,7 @@ Dịch: Độ tin cậy và chi phí được cân bằng như nhau trong việc
 (D) sự đánh giá, ước lượng
 
 =====
-ETS6 - 2019
+ETS2019 - test 6
 106. Mr. Winkel's ------- responsibilities include
 auditing and financial review of large clients.
 (A) accounts
@@ -221,22 +219,30 @@ Architecture Expo has garnered much -------.
 (C) interested
 (D) interesting
 
+=> A. sau tính từ much cần điền danh từ không đếm được.
+Loại trừ: (B) danh từ số nhiều (sở thích), thì hiện tại đơn chia ở ngôi thứ 3 số ít
+(C) tính từ (quan tâm, thích thú, phía sau thường có giới từ in)
+(D) tính từ (thú vị)
+
 128. The recently adopted policy restructures the
-company's debt according to a -------
-five-step plan.
+company's debt according to a ------- five-step plan.
 (A) managing
 (B) manageably
 (C) manages
 (D) manageable
 
-129. The quality assurance department needs to
-hire additional staff ------- production has
-increased by 50 percent.
+=> D. Cần điền tính từ ở đây
+
+129. The quality assurance department needs to hire additional staff ------- production has increased by 50 percent.
 (A) even though
 (B) since
 (C) because of
 (D) therefore
 
+=> B. So sánh since với because of:
+since/because/as + mệnh đề
+because of + N/V-ing
+Because, since, as là các liên từ. Because of là giới từ
 
 ===
 <style>
