@@ -1,0 +1,91 @@
+Github:
+- First, register your app, you will get client_id and client_secret
+
+- client (app) gives user a URL:
+https://github.com/login/oauth/authorize?scope=user:email&client_id=aa5862f0cff5cd19c476
+
+- after user accept (authorize), then user will be redirected to:
+http://localhost:8087/?code=78313cc536d30b39a66e
+	(http://localhost:8087 = callback_url, setting it in github > developer)
+	(code: github give app this code, use this code ONCE to get access_token)
+
+- go to here to get access_token:
+POST: https://github.com/login/oauth/access_token?client_id=aa5862f0cff5cd19c476&client_secret=a875bbe1818106e92583fb6865a95d51912835cc&code=78313cc536d30b39a66e
+Note: this code only be used ONCE!
+assume server will return:
+access_token=05aaa85607cb7fc8ff3822fe119493c9c6cbe94a&scope=user%3Aemail&token_type=bearer
+
+- Use the access token to access the API:
+GET: https://api.github.com/user?access_token=05aaa85607cb7fc8ff3822fe119493c9c6cbe94a
+
+=====
+Salesforce (very similar to Github):
+- First, register your connected app, you will get client_id and client_secret:
+https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_defining_remote_access_applications.htm
+
+- Get authentication_code:
+GET: https://login.salesforce.com/services/oauth2/authorize, with the following params
+	client_id
+	response_type
+	redirect_uri (setting when you create connected app)
+Example: https://login.salesforce.com/services/oauth2/authorize?client_id=3MVG9d8..z.hDcPLT2_Q63RoEZ07CAttFjLLcUeov8_onYKwBhYpCdMQ61Kmmlp7K8C0hagwA1dySM.Bp37Rb&response_type=code&redirect_uri=https://localhost:8443/ForceRestDemo/oauth/callback
+After request the above URL, server will response (redirect to) a URL:
+https://localhost:8443/ForceRestDemo/oauth/callback?code=aPrxshT49BthlzLdDB3ROLjmsGL8_Ht6bKTeY7AvIbGxzvRjUYH4__y50sr.XRKGUB_wLPpaKg%3D%3D
+	(https://localhost:8443/ForceRestDemo/oauth/callback = redirect_uri)
+	
+- use the above code to get access_token (note: you must replace "%3D" with "=" character:
+POST: https://login.salesforce.com/services/oauth2/token, with the following params
+	grant_type=authorization_code
+	code=aPrxshT49BthlzLdDB3ROLjmsGL8_Ht6bKTeY7AvIbGxzvRjUYH4__y50sr.XRKGUB_wLPpaKg==
+	client_id
+	client_secret
+	redirect_uri
+
+After request the above URL, server will response in JSON format, example:
+{
+    "access_token": "00D7F000000zqRH!ARQAQH0ESlc6PyNKWi1wWAOpnEC7xYyaQq4cKaM_pvikq1WcNKogRADX5SiurH5p0L2J9wSzOyAy7iJscHRFz4Y0Q6ZcWeuH",
+    "refresh_token": "5Aep8613hy0tHCYdhx61d.GjdK_qqRznSxImPTnnHXCSerrzA_Rl5kfYVLZIgLX.ecjHB5S_7_xIGKVDgQzt.RJ",
+    "signature": "ReY/oZevUJDAH9reoQ+pTGc94j1L76PgOOn65XdSG1o=",
+    "scope": "visualforce refresh_token wave_api custom_permissions web openid chatter_api api id eclair_api full",
+    "id_token": "eyJraWQiOiIyMTQiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdF9oYXNoIjoiZFhnQUtYYU56YWZpRU04MVZaNUNvZyIsInN1YiI6Imh0dHBzOi8vbG9naW4uc2FsZXNmb3JjZS5jb20vaWQvMDBEN0YwMDAwMDB6cVJIVUFZLzAwNTdGMDAwMDAwdWd1U1FBUSIsImF1ZCI6IjNNVkc5ZDguLnouaERjUExUMl9RNjNSb0VaMDdDQXR0RmpMTGNVZW92OF9vbllLd0JoWXBDZE1RNjFLbW1scDdLOEMwaGFnd0ExZHlTTS5CcDM3UmIiLCJpc3MiOiJodHRwczovL2xvZ2luLnNhbGVzZm9yY2UuY29tIiwiZXhwIjoxNTM4NTU0MzI4LCJpYXQiOjE1Mzg1NTQyMDh9.viZXAI0IpepwnZqk1RaSxQAkwEOKH3J_U1ru6k4F46jGy9ShWn4WnxnezxbshggtHwDVmVcL-Dgh2u-LlF87Y3THCGsvcz3L4WD6y3s7TPOhjaK-bMdkT1vpiF5Sffmt06hnFJQRTgrPm9P_sD8A8-Ex-VQiFywx4UdSamdpdYTArdrGNhGZr2oN_5-kFlRyaRqYAZTndEBksWBrl4W4fOjRfmJzjXa4j9p7_I3RaGDoqziNYy8p3Z9UBTggsWjLOXDcsySGNynW1Neoeww1jsMTu-Vg73iaOgtjWArb_-UqGcD42v0mnPjZr2NyPAG8FHgTSDpFsHKocqALylykU0DsVxeDLGUfFY0vYh-T6WHddLnSdHpNaSeeV2Tm8YFbdY_oE4R0wpFC2kGZFtEZfC0vOgfW42SDPhr0ZK8gWkWljrV3weSkaBIC3lrjr5YFoL8GXBJfQFuVTmHd5IRXDP8r20yjAw-UeoV_-tD1oZcP-pcM3Sj4i8N-lZ8XyAXkvHQIxFvuRoJdOosvJP52qDAHfBKsarVKP_X54tsrQ78iWh_pbEv7FQBkzfPBxCttxXcZigNslPvm7GDLknHrQUane9hGScNdABRSjiTo1hncouATTk1HVgJh_Eedt1bxXzYp4lwJEYB6PeiVackbF1gjfi3zoUYUgiRUOpUJkNs",
+    "instance_url": "https://ap5.salesforce.com",
+    "id": "https://login.salesforce.com/id/00D7F000000zqRHUAY/0057F000000uguSQAQ",
+    "token_type": "Bearer",
+    "issued_at": "1538554208342"
+}
+
+- Use the access token to get data (REST API), example:
+GET: https://ap5.salesforce.com/services/data/v37.0/sobjects/, with header:
+	Authorization = Bearer 00D7F000000zqRH!ARQAQH0ESlc6PyNKWi1wWAOpnEC7xYyaQq4cKaM_pvikq1WcNKogRADX5SiurH5p0L2J9wSzOyAy7iJscHRFz4Y0Q6ZcWeuH
+
+Another example: retrieve record from Student__c, with ID = a017F000002plRh
+https://ap5.salesforce.com/services/data/v37.0/sobjects/Student__c/a017F000002plRh
+	(Note, send header like above)
+Response from server:
+{
+    "attributes": {
+        "type": "Student__c",
+        "url": "/services/data/v37.0/sobjects/Student__c/a017F000002plRhQAI"
+    },
+    "Id": "a017F000002plRhQAI",
+    "OwnerId": "0057F000000uguSQAQ",
+    "IsDeleted": false,
+    "Name": "Android 18",
+    "CreatedDate": "2017-08-08T15:59:26.000+0000",
+    "CreatedById": "0057F000000uguSQAQ",
+    "LastModifiedDate": "2017-08-08T15:59:26.000+0000",
+    "LastModifiedById": "0057F000000uguSQAQ",
+    "SystemModstamp": "2017-08-08T15:59:26.000+0000",
+    "LastViewedDate": "2018-10-03T08:30:40.000+0000",
+    "LastReferencedDate": "2018-10-03T08:30:40.000+0000",
+    "Student_ID__c": "2432432",
+    "Student_Addr__c": "Tokyo",
+    "Invoice__c": null,
+    "DieDate__c": null
+}
+
+Or if using curl:
+curl https://ap5.salesforce.com/services/data/v37.0/sobjects/Student__c/a017F000002plRh -H "Authorization: Bearer 00D7F000000zqRH!ARQAQH0ESlc6PyNKWi1wWAOpnEC7xYyaQq4cKaM_pvikq1WcNKogRADX5SiurH5p0L2J9wSzOyAy7iJscHRFz4Y0Q6ZcWeuH" -H "X-PrettyPrint:1"
+
+- See more: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm
+
